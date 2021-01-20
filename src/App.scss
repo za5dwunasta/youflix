@@ -1,0 +1,52 @@
+.navbar {
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #202020;
+	padding: 1rem 3rem;
+	&__logo {
+		color: #fff;
+	}
+}
+
+.heading {
+	color: #fff;
+	padding: 3rem 3rem 0 3rem;
+	font-size: 1.25rem;
+}
+
+.results-grid {
+	margin: 3rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	// grid-gap: 0.5rem;
+}
+
+.grid__item {
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	&:hover img {
+		opacity: 0.5;
+	}
+	img {
+		width: 100%;
+	}
+	&-title {
+		font-family: 'Roboto', sans-serif;
+		color: #fff;
+		font-size: 0.875rem;
+		margin: 0.75rem auto;
+	}
+	&-chanel {
+		color: #aaaaaa;
+		font-size: 0.875rem;
+	}
+	&-date {
+		color: #aaaaaa;
+		font-size: 0.875rem;
+	}
+}
