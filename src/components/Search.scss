@@ -1,5 +1,7 @@
-.navbar {
-	&__searchbox {
+.search {
+	position: relative;
+	display: flex;
+	&__box {
 		width: 300px;
 		height: 1.75rem;
 		background-color: #121212;
@@ -27,5 +29,17 @@
 		svg {
 			margin-top: 1px;
 		}
+	}
+	&__suggestions {
+		list-style: none;
+		background-color: #fff;
+		color: #333333;
+		width: 300px;
+		position: absolute;
+		top: 32px;
+		left: 1px;
+	}
+	&__input-container {
+		position: relative;
 	}
 }

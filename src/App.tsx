@@ -3,16 +3,21 @@ import './App.scss';
 import GridItem from './components/GridItem';
 import Search from './components/Search';
 import { usePopularSearch } from './hooks/usePopularSearch';
+import { ReactComponent as Githubicon } from './assets/github-icon.svg';
+import { useVideosValue, VideosProvider } from './context/videos-context';
 
 const App: React.FC = () => {
 	let today: Date = new Date();
-	const { videos } = usePopularSearch();
+	const { videos } = useVideosValue();
+	console.log('app ' + videos);
 	return (
 		<div className="App">
 			<div className="navbar">
 				<h1 className="navbar__logo">YouTube</h1>
 				<Search />
-				<div className="icon">github</div>
+				<div className="icon">
+					<Githubicon />
+				</div>
 			</div>
 			<h2 className="heading">Most popular videos on Youtube</h2>
 			<div className="results-grid">

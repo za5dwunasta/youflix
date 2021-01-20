@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { VideosProvider } from './context/videos-context';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<VideosProvider>
+			<App />
+		</VideosProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
