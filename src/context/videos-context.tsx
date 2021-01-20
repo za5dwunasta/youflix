@@ -1,30 +1,39 @@
-import React, { createContext, useContext, useState } from 'react';
-import { data } from '../data/data';
-import { videosType, searchResultsType } from '../types/videosTypes';
+import React, { createContext, useContext } from 'react';
+import { usePopularSearch } from '../hooks/usePopularSearch';
 
 interface IVideos {
 	videos: any[];
-	setVideos: (videos: any[]) => void;
+	customSearch: boolean;
+	setCustomSearch: (customSearch: boolean) => void;
+	searchTerm: string;
+	setSearchTerm: (customSearch: string) => void;
+	today: Date;
 }
 
 const IVideosValue: IVideos = {
 	videos: [],
-	setVideos: () => {},
+	customSearch: false,
+	setCustomSearch: () => {},
+	searchTerm: '',
+	setSearchTerm: () => {},
+	today: new Date(),
 };
 
 export const VideosContext = createContext<IVideos>(IVideosValue);
 // eslint-disable-next-line react/prop-types
 export const VideosProvider = ({ children }: { children: React.ReactNode }) => {
-	const key = process.env.REACT_APP_KEY_YOUTUBE;
-	const initialData = data.items;
-	const [videos, setVideos] = useState<any[]>(initialData);
+	const today = new Date();
+	const { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm } = usePopularSearch();
 
-	console.log('context' + videos);
 	return (
 		<VideosContext.Provider
 			value={{
 				videos,
-				setVideos,
+				today,
+				customSearch,
+				setCustomSearch,
+				searchTerm,
+				setSearchTerm,
 			}}
 		>
 			{children}
