@@ -5,14 +5,16 @@ import Search from './components/Search';
 import { ReactComponent as Githubicon } from './assets/github-icon.svg';
 
 import HomePage from './layout/HomePage';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import SingleVideo from './layout/SingleVideo';
 
 const App: React.FC = () => {
 	return (
 		<div className="App">
 			<div className="navbar">
-				<h1 className="navbar__logo">YouTube</h1>
+				<Link to="/">
+					<h1 className="navbar__logo">YouTube</h1>
+				</Link>
 				<Search />
 				<div className="icon">
 					<Githubicon />
@@ -22,7 +24,7 @@ const App: React.FC = () => {
 				<Route path="/" exact>
 					<HomePage />
 				</Route>
-				<Route path="/:id">
+				<Route path="/videos/:id">
 					<SingleVideo />
 				</Route>
 			</Switch>

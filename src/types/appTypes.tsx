@@ -1,4 +1,4 @@
-export type videosType = {
+export type VideosType = {
 	id: string;
 	snippet: {
 		publishedAt: number;
@@ -23,7 +23,7 @@ export type videosType = {
 	};
 };
 
-export type searchResultsType = {
+export type SearchResultsType = {
 	items: [
 		{
 			kind: 'youtube#searchResult';
@@ -52,3 +52,9 @@ export type searchResultsType = {
 		}
 	];
 };
+
+export enum ResponseValueType {
+	loading,
+	responseData,
+	error,
+}
