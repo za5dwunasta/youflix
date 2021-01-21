@@ -53,7 +53,7 @@ export type SearchResultsType = {
 	];
 };
 
-export enum ResponseValueType {
+export enum responseStatusType {
 	loading,
 	responseData,
 	error,

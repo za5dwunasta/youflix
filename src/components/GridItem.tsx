@@ -10,7 +10,7 @@ type GridItemProps = {
 
 const GridItem: React.FC<GridItemProps> = ({ item, timeSincePubl, datePubl, today }) => {
 	return (
-		<Link to={`/videos/${item.id.videoId}`}>
+		<Link to={`/videos/${typeof item.id === 'object' ? item.id.videoId : item.id}`}>
 			<div key={item.id} className="grid__item">
 				<img src={item.snippet?.thumbnails?.medium?.url} alt="" />
 				<div className="grid__item-desc">

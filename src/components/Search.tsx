@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReactComponent as Loupe } from '../assets/loupe.svg';
 import { useVideosValue } from '../context/videos-context';
+import { useParams, useHistory } from 'react-router-dom';
 
 import './Search.scss';
 
@@ -11,6 +12,8 @@ const Search: React.FC = () => {
 	const [resultsList, setResultsList] = useState<any[]>([]);
 	const [tempSearch, setTempSearch] = useState<string>('');
 	const { setSearchTerm } = useVideosValue();
+	const { id } = useParams<{ id: string }>();
+	const history = useHistory();
 
 	useEffect(() => {
 		const delay = setTimeout(() => setRequestCount(requestCount + 1), 700);
@@ -46,6 +49,9 @@ const Search: React.FC = () => {
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
 		setSearchTerm(tempSearch);
+		if (id !== '') {
+			history.push('/');
+		}
 	};
 
 	return (

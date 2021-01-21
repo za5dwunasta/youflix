@@ -10,19 +10,6 @@
 	}
 }
 
-.heading {
-	color: #fff;
-	padding: 3rem 3rem 0 3rem;
-	font-size: 1.25rem;
-}
-
-.results-grid {
-	margin: 3rem;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-	grid-gap: 0.5rem;
-}
-
 .grid__item {
 	display: flex;
 	flex-direction: column;

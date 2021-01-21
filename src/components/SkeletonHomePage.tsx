@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import '../App.scss';
 
-const SkeletonCard = () => {
+const SkeletonHomePage = () => {
 	return (
 		<SkeletonTheme color="#000000" highlightColor="#131313">
 			<h2 className="heading">
@@ -15,7 +15,7 @@ const SkeletonCard = () => {
 					.map((item, index) => (
 						<>
 							<div className="grid-item" key={index}>
-								<Skeleton height={180} width={240} />
+								<Skeleton height={180} width={'100%'} />
 
 								<h3 className="grid__item-title">
 									<Skeleton width={`60%`} />
@@ -33,4 +33,4 @@ const SkeletonCard = () => {
 		</SkeletonTheme>
 	);
 };
-export default SkeletonCard;
+export default SkeletonHomePage;

@@ -1,0 +1,11 @@
+.heading {
+	color: #fff;
+	font-size: 1.25rem;
+}
+
+.results-grid {
+	margin-top: 3rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	grid-gap: 1rem;
+}

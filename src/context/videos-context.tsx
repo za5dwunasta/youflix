@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useVideosSearch } from '../hooks/useVideosSearch';
-import { ResponseValueType } from '../types/appTypes';
+import { responseStatusType } from '../types/appTypes';
 
 interface IVideos {
 	videos: any[];
@@ -9,7 +9,7 @@ interface IVideos {
 	searchTerm: string;
 	setSearchTerm: (customSearch: string) => void;
 	today: Date;
-	responseValue: ResponseValueType;
+	responseStatus: responseStatusType;
 }
 
 const IVideosValue: IVideos = {
@@ -19,14 +19,14 @@ const IVideosValue: IVideos = {
 	searchTerm: '',
 	setSearchTerm: () => {},
 	today: new Date(),
-	responseValue: ResponseValueType.loading,
+	responseStatus: responseStatusType.loading,
 };
 
 export const VideosContext = createContext<IVideos>(IVideosValue);
 // eslint-disable-next-line react/prop-types
 export const VideosProvider = ({ children }: { children: React.ReactNode }) => {
 	const today = new Date();
-	const { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseValue } = useVideosSearch();
+	const { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseStatus } = useVideosSearch();
 
 	return (
 		<VideosContext.Provider
@@ -37,7 +37,7 @@ export const VideosProvider = ({ children }: { children: React.ReactNode }) => {
 				setCustomSearch,
 				searchTerm,
 				setSearchTerm,
-				responseValue,
+				responseStatus,
 			}}
 		>
 			{children}

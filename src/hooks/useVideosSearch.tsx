@@ -1,17 +1,17 @@
 import { loadavg } from 'os';
 import { useEffect, useState } from 'react';
-import { VideosType, ResponseValueType } from '../types/appTypes';
+import { VideosType, responseStatusType } from '../types/appTypes';
 
 export const useVideosSearch = () => {
 	const [customSearch, setCustomSearch] = useState<boolean>(false);
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const [videos, setVideos] = useState<VideosType[]>([]);
-	const [responseValue, setResponseValue] = useState<ResponseValueType>(ResponseValueType.loading);
+	const [responseStatus, setResponseStatus] = useState<responseStatusType>(responseStatusType.loading);
 	const key = process.env.REACT_APP_KEY_YOUTUBE;
 
 	useEffect(() => {
 		let url = '';
-		setResponseValue(ResponseValueType.loading);
+		setResponseStatus(responseStatusType.loading);
 		if (searchTerm === '') {
 			console.log('set popular');
 			url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,id&chart=mostPopular&maxResults=25&key=${key}`;
@@ -28,10 +28,10 @@ export const useVideosSearch = () => {
 				const result = await response.json();
 				console.log(result);
 				setVideos(result.items);
-				setResponseValue(ResponseValueType.responseData);
+				setResponseStatus(responseStatusType.responseData);
 			} catch (e) {
 				console.log(e);
-				setResponseValue(ResponseValueType.error);
+				setResponseStatus(responseStatusType.error);
 			} finally {
 				console.log('success!');
 			}
@@ -39,5 +39,5 @@ export const useVideosSearch = () => {
 		console.log(videos);
 		load();
 	}, [customSearch, searchTerm, key]);
-	return { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseValue };
+	return { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseStatus };
 };

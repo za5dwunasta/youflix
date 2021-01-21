@@ -7,6 +7,7 @@ import { ReactComponent as Githubicon } from './assets/github-icon.svg';
 import HomePage from './layout/HomePage';
 import { Route, Switch, Link } from 'react-router-dom';
 import SingleVideo from './layout/SingleVideo';
+import PageWrapper from './layout/PageWrapper';
 
 const App: React.FC = () => {
 	return (
@@ -20,14 +21,16 @@ const App: React.FC = () => {
 					<Githubicon />
 				</div>
 			</div>
-			<Switch>
-				<Route path="/" exact>
-					<HomePage />
-				</Route>
-				<Route path="/videos/:id">
-					<SingleVideo />
-				</Route>
-			</Switch>
+			<PageWrapper>
+				<Switch>
+					<Route path="/" exact>
+						<HomePage />
+					</Route>
+					<Route path="/videos/:id">
+						<SingleVideo />
+					</Route>
+				</Switch>
+			</PageWrapper>
 		</div>
 	);
 };

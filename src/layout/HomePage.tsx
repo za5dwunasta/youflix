@@ -2,16 +2,18 @@ import React from 'react';
 import GridItem from '../components/GridItem';
 
 import { useVideosValue } from '../context/videos-context';
-import { ResponseValueType } from '../types/appTypes';
-import SkeletonCard from './SkeletonCart';
+import { responseStatusType } from '../types/appTypes';
+import SkeletonHomePage from '../components/SkeletonHomePage';
+
+import './HomePage.scss';
 
 const HomePage: React.FC = () => {
-	const { videos, today, responseValue } = useVideosValue();
+	const { videos, today, responseStatus } = useVideosValue();
 
 	return (
 		<>
-			{responseValue === ResponseValueType.loading ? (
-				<SkeletonCard />
+			{responseStatus === responseStatusType.loading ? (
+				<SkeletonHomePage />
 			) : (
 				<>
 					<h2 className="heading">Most popular videos on Youtube</h2>
