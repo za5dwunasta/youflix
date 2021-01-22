@@ -58,18 +58,13 @@
 			border: none;
 		}
 	}
-	// &__likes {
-	// 	border: none;
-	// 	background-color: #181818;
-	// 	cursor: pointer;
-	// 	svg path {
-	// 		fill: #909090;
-	// 	}
-	// 	svg:hover path {
-	// 		fill: #da4567;
-	// 	}
-	// 	&:focus {
-	// 		border: none;
-	// 	}
-	// }
+}
+
+@media only screen and (max-width: 600px) {
+	.video__stats {
+		flex-direction: column;
+		& > * {
+			padding-bottom: 0.25rem;
+		}
+	}
 }

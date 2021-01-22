@@ -14,7 +14,7 @@ const GridItem: React.FC<GridItemProps> = ({ item, timeSincePubl, datePubl, toda
 	return (
 		<Link to={`/videos/${typeof item.id === 'object' ? item.id.videoId : item.id}`}>
 			<div key={item.id} className="grid__item">
-				<img src={item.snippet?.thumbnails?.medium?.url} width="320" height="180" alt={item.snippet.title} />
+				<img src={item.snippet?.thumbnails?.medium?.url} alt={item.snippet.title} />
 				<div className="grid__item-desc">
 					<h3 className="grid__item-title">{item.snippet.title}</h3>
 					<div className="grid__item-chanel">{item.snippet.channelTitle}</div>

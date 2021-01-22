@@ -14,3 +14,15 @@
 		border: none;
 	}
 }
+
+@media only screen and (max-width: 600px) {
+	.navbar {
+		flex-direction: column;
+		&__icon {
+			display: none;
+		}
+		&__logo {
+			margin-bottom: 1rem;
+		}
+	}
+}

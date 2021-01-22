@@ -34,7 +34,12 @@ const App: React.FC = () => {
 				</button>
 
 				<Search />
-				<a className="icon" href="https://github.com/za5dwunasta/youflix" rel="noreferrer" target="_blank">
+				<a
+					className="navbar__icon"
+					href="https://github.com/za5dwunasta/youflix"
+					rel="noreferrer"
+					target="_blank"
+				>
 					<Githubicon />
 				</a>
 			</div>
