@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PageNotFound = () => {
+const PageNotFound: React.FunctionComponent = () => {
 	return (
 		<div style={{ textAlign: 'center' }}>
 			Oops, this page isn't here! Please go back to{' '}

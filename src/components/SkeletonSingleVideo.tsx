@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import '../layout/SingleVideo.scss';
 
-const SkeletonSingleVideo = () => {
+const SkeletonSingleVideo: React.FunctionComponent = () => {
 	return (
 		<SkeletonTheme color="#000000" highlightColor="#131313">
 			<div className="video__container">

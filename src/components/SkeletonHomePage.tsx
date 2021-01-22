@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import '../App.scss';
 
-const SkeletonHomePage = () => {
+const SkeletonHomePage: React.FunctionComponent = () => {
 	return (
 		<SkeletonTheme color="#000000" highlightColor="#131313">
 			<h2 className="heading">

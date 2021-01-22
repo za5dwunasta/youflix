@@ -14,7 +14,7 @@ import moment from 'moment';
 import './SingleVideo.scss';
 import ErrorPage from './ErrorPage';
 
-const SingleVideo = () => {
+const SingleVideo: React.FunctionComponent = () => {
 	const { id } = useParams<{ id: string }>();
 	const [hearted, setHearted] = useState(localStorage.getItem(id) || false);
 	const { video, responseStatus } = useVideoDetails(id);

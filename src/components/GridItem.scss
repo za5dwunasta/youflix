@@ -1,0 +1,29 @@
+.grid__item {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	&:hover img {
+		opacity: 0.5;
+	}
+	img {
+		width: 100%;
+	}
+	&-title {
+		font-family: 'Roboto', sans-serif;
+		color: #fff;
+		font-size: 0.875rem;
+		margin: 0.75rem auto;
+	}
+	&-chanel {
+		color: #aaaaaa;
+		font-size: 0.875rem;
+	}
+	&-date {
+		color: #aaaaaa;
+		font-size: 0.875rem;
+	}
+	img {
+		aspect-ratio: attr(width) / attr(height);
+	}
+}

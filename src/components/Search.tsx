@@ -41,6 +41,7 @@ const Search: React.FC = () => {
 						placeholder={`${tempSearch !== '' ? tempSearch : 'Search'}`}
 						type="text"
 						value={tempSearch}
+						aria-label="Custom search input field"
 					/>
 				</div>
 				<button type="submit" aria-label="Search" className="search__button">

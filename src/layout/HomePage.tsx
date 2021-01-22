@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
 	};
 
 	useEffect(() => {
-		document.addEventListener('scroll', trackScrolling);
+		document.addEventListener('scroll', trackScrolling, { passive: true });
 	});
 
 	return (

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { Route, Switch, useParams, useHistory } from 'react-router-dom';
 
 import './App.scss';
@@ -10,9 +10,9 @@ import { ReactComponent as Githubicon } from './assets/github-icon.svg';
 
 import { loadingType } from './types/appTypes';
 
-const HomePage = lazy(() => import('./layout/HomePage'));
-const SingleVideo = lazy(() => import('./layout/SingleVideo'));
-const PageNotFound = lazy(() => import('./layout/PageNotFound'));
+import SingleVideo from './layout/SingleVideo';
+import HomePage from './layout/HomePage';
+import PageNotFound from './layout/PageNotFound';
 
 const App: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -34,24 +34,22 @@ const App: React.FC = () => {
 				</button>
 
 				<Search />
-				<div className="icon">
+				<a className="icon" href="https://github.com/za5dwunasta/youflix" rel="noreferrer" target="_blank">
 					<Githubicon />
-				</div>
+				</a>
 			</div>
 			<PageWrapper>
-				<Suspense fallback={<div>Wczytywanie...</div>}>
-					<Switch>
-						<Route path="/" exact>
-							<HomePage />
-						</Route>
-						<Route path="/videos/:id">
-							<SingleVideo />
-						</Route>
-						<Route>
-							<PageNotFound />
-						</Route>
-					</Switch>
-				</Suspense>
+				<Switch>
+					<Route path="/" exact>
+						<HomePage />
+					</Route>
+					<Route path="/videos/:id">
+						<SingleVideo />
+					</Route>
+					<Route>
+						<PageNotFound />
+					</Route>
+				</Switch>
 			</PageWrapper>
 		</div>
 	);
