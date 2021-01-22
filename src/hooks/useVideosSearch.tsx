@@ -33,8 +33,12 @@ export const useVideosSearch = () => {
 				const result = await response.json();
 				setNextPageToken(result.nextPageToken);
 				if (loadMore === loadingType.initial) {
-					if (result.items?.length === 0 || result.items === undefined) {
+					if (result.items === undefined) {
 						setResponseStatus(responseStatusType.error);
+						return;
+					}
+					if (result.items?.length === 0) {
+						setResponseStatus(responseStatusType.noData);
 						return;
 					}
 					setVideos(result.items);

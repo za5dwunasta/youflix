@@ -30,7 +30,9 @@ const HomePage: React.FC = () => {
 			{responseStatus === responseStatusType.loading ? (
 				<SkeletonHomePage />
 			) : responseStatus === responseStatusType.error ? (
-				<ErrorPage />
+				<ErrorPage text="Oops, there was a problem loading data. Please refresh or try later." />
+			) : responseStatus === responseStatusType.noData ? (
+				<ErrorPage text="We can't find video you are looking for :(" />
 			) : (
 				<>
 					<h2 className="heading">

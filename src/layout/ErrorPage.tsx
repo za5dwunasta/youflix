@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ErrorPage: React.FunctionComponent = () => {
-	return (
-		<div style={{ textAlign: 'center' }}>Oops, there was a problem loading data. Please refresh or try later.</div>
-	);
+type ErrorProps = {
+	text: string;
+};
+
+const ErrorPage: React.FC<ErrorProps> = ({ text }) => {
+	return <div style={{ textAlign: 'center' }}>{text}</div>;
 };
 
 export default ErrorPage;

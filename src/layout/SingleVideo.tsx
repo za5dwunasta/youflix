@@ -24,7 +24,9 @@ const SingleVideo: React.FunctionComponent = () => {
 			{responseStatus === responseStatusType.loading ? (
 				<SkeletonSingleVideo />
 			) : responseStatus === responseStatusType.error ? (
-				<ErrorPage />
+				<ErrorPage text="Oops, there was a problem loading data. Please refresh or try later." />
+			) : responseStatus === responseStatusType.noData ? (
+				<ErrorPage text="We can't find video you are looking for :(" />
 			) : (
 				<div className="video__container">
 					<div className="video__box">
