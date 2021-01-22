@@ -17,7 +17,6 @@ const HomePage: React.FC = () => {
 		const pageView = document.documentElement.scrollTop + window.innerHeight - 48 - 70;
 
 		if (contentHeight === pageView) {
-			console.log('header bottom reached');
 			setLoadMore(loadingType.more);
 		}
 	};

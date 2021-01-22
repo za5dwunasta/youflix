@@ -21,8 +21,8 @@ const InitialValue: IVideo = {
 };
 
 const useVideoDetails = (id: string) => {
-	const [video, setVideo] = useState<IVideo>(InitialValue);
 	const key = process.env.REACT_APP_KEY_YOUTUBE;
+	const [video, setVideo] = useState<IVideo>(InitialValue);
 	const [responseStatus, setResponseStatus] = useState<responseStatusType>(responseStatusType.loading);
 
 	useEffect(() => {
@@ -37,15 +37,7 @@ const useVideoDetails = (id: string) => {
 					setResponseStatus(responseStatusType.error);
 					return;
 				}
-				console.log({
-					title: result.items[0].snippet.title,
-					views: result.items[0].statistics.viewCount,
-					likes: result.items[0].statistics.likeCount,
-					dislikes: result.items[0].statistics.dislikeCount,
-					comments: result.items[0].statistics.commentCount,
-					iframe: result.items[0].player.embedHtml,
-					date: result.items[0].snippet.publishedAt,
-				});
+
 				setVideo({
 					title: result.items[0].snippet.title,
 					views: result.items[0].statistics.viewCount,
@@ -66,9 +58,7 @@ const useVideoDetails = (id: string) => {
 				setResponseStatus(responseStatusType.responseData);
 			} catch (e) {
 				setResponseStatus(responseStatusType.error);
-				console.log(e);
 			} finally {
-				console.log('success!');
 			}
 		}
 		load();

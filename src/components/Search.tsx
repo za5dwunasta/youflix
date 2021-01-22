@@ -23,8 +23,6 @@ const Search: React.FC = () => {
 		}
 		setSearchTerm(tempSearch);
 		setLoadMore(loadingType.initial);
-
-		console.log(tempSearch);
 		if (id !== '') {
 			history.push('/');
 		}
