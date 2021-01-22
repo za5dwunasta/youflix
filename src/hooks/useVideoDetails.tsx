@@ -33,16 +33,20 @@ const useVideoDetails = (id: string) => {
 			try {
 				const response = await fetch(url);
 				const result = await response.json();
+				if (result.items === undefined) {
+					setResponseStatus(responseStatusType.error);
+					return;
+				}
 				setVideo({
 					title: result.items[0].snippet.title,
 					views: result.items[0].statistics.viewCount,
 					likes: result.items[0].statistics.likeCount,
 					dislikes: result.items[0].statistics.dislikeCount,
 					comments: result.items[0].statistics.commentCount,
-
 					iframe: result.items[0].player.embedHtml,
 					date: result.items[0].snippet.publishedAt,
 				});
+
 				setResponseStatus(responseStatusType.responseData);
 			} catch (e) {
 				setResponseStatus(responseStatusType.error);

@@ -58,3 +58,9 @@ export enum responseStatusType {
 	responseData,
 	error,
 }
+
+export enum loadingType {
+	initial,
+	more,
+	stop,
+}

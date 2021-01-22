@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import GridItem from '../components/GridItem';
 
 import { useVideosValue } from '../context/videos-context';
-import { responseStatusType } from '../types/appTypes';
+import { responseStatusType, loadingType } from '../types/appTypes';
 import SkeletonHomePage from '../components/SkeletonHomePage';
 
 import './HomePage.scss';
+import ErrorPage from './ErrorPage';
 
 const HomePage: React.FC = () => {
-	const { videos, today, responseStatus } = useVideosValue();
+	const { videos, today, responseStatus, setLoadMore } = useVideosValue();
+	const container = useRef<HTMLDivElement>(null);
+
+	const trackScrolling = () => {
+		const contentHeight = container?.current?.offsetHeight;
+		const pageView = document.documentElement.scrollTop + window.innerHeight - 48 - 70;
+
+		if (contentHeight === pageView) {
+			console.log('header bottom reached');
+			setLoadMore(loadingType.more);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('scroll', trackScrolling);
+	}, []);
 
 	return (
-		<>
+		<div ref={container}>
 			{responseStatus === responseStatusType.loading ? (
 				<SkeletonHomePage />
+			) : responseStatus === responseStatusType.error ? (
+				<ErrorPage />
 			) : (
 				<>
 					<h2 className="heading">Most popular videos on Youtube</h2>
@@ -30,13 +48,14 @@ const HomePage: React.FC = () => {
 										timeSincePubl={timeSincePubl}
 										datePubl={datePubl}
 										today={today}
+										key={typeof item.id === 'object' ? item.id.videoId : item.id}
 									/>
 								);
 							})}
 					</div>
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 

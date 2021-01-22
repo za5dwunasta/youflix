@@ -9,8 +9,10 @@ import { ReactComponent as Comment } from '../assets/comment.svg';
 import useVideoDetails from '../hooks/useVideoDetails';
 import { responseStatusType } from '../types/appTypes';
 import SkeletonSingleVideo from '../components/SkeletonSingleVideo';
+import moment from 'moment';
 
 import './SingleVideo.scss';
+import ErrorPage from './ErrorPage';
 
 const SingleVideo = () => {
 	const { id } = useParams<{ id: string }>();
@@ -21,6 +23,8 @@ const SingleVideo = () => {
 		<>
 			{responseStatus === responseStatusType.loading ? (
 				<SkeletonSingleVideo />
+			) : responseStatus === responseStatusType.error ? (
+				<ErrorPage />
 			) : (
 				<div className="video__container">
 					<div className="video__box">
@@ -36,9 +40,9 @@ const SingleVideo = () => {
 					<h3 className="video__description">{video?.title}</h3>
 					<div className="video__stats">
 						<p className="video__views">
-							{numberWithSpaces(video?.views)} views ● {video?.date}
+							{numberWithSpaces(video?.views)} views • {moment(video?.date).format('MMM Do YY')}
 						</p>
-						<p className="video__date"></p>
+
 						<p className="video__likes">
 							<Like /> {numberWithSpaces(video?.likes)}
 						</p>

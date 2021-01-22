@@ -10,6 +10,7 @@ interface IVideos {
 	setSearchTerm: (customSearch: string) => void;
 	today: Date;
 	responseStatus: responseStatusType;
+	setLoadMore: (loadMore: any) => void;
 }
 
 const IVideosValue: IVideos = {
@@ -18,6 +19,7 @@ const IVideosValue: IVideos = {
 	setCustomSearch: () => {},
 	searchTerm: '',
 	setSearchTerm: () => {},
+	setLoadMore: () => {},
 	today: new Date(),
 	responseStatus: responseStatusType.loading,
 };
@@ -26,7 +28,15 @@ export const VideosContext = createContext<IVideos>(IVideosValue);
 // eslint-disable-next-line react/prop-types
 export const VideosProvider = ({ children }: { children: React.ReactNode }) => {
 	const today = new Date();
-	const { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseStatus } = useVideosSearch();
+	const {
+		videos,
+		customSearch,
+		setCustomSearch,
+		searchTerm,
+		setSearchTerm,
+		responseStatus,
+		setLoadMore,
+	} = useVideosSearch();
 
 	return (
 		<VideosContext.Provider
@@ -38,6 +48,7 @@ export const VideosProvider = ({ children }: { children: React.ReactNode }) => {
 				searchTerm,
 				setSearchTerm,
 				responseStatus,
+				setLoadMore,
 			}}
 		>
 			{children}

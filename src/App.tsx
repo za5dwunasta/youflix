@@ -8,6 +8,7 @@ import HomePage from './layout/HomePage';
 import { Route, Switch, Link } from 'react-router-dom';
 import SingleVideo from './layout/SingleVideo';
 import PageWrapper from './layout/PageWrapper';
+import PageNotFound from './layout/PageNotFound';
 
 const App: React.FC = () => {
 	return (
@@ -28,6 +29,9 @@ const App: React.FC = () => {
 					</Route>
 					<Route path="/videos/:id">
 						<SingleVideo />
+					</Route>
+					<Route>
+						<PageNotFound />
 					</Route>
 				</Switch>
 			</PageWrapper>

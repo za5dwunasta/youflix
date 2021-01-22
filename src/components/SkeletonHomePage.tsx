@@ -13,7 +13,7 @@ const SkeletonHomePage = () => {
 				{Array(9)
 					.fill('')
 					.map((item, index) => (
-						<>
+						<div key={index}>
 							<div className="grid-item" key={index}>
 								<Skeleton height={180} width={'100%'} />
 
@@ -27,7 +27,7 @@ const SkeletonHomePage = () => {
 									<Skeleton width={`50%`} />
 								</div>
 							</div>
-						</>
+						</div>
 					))}
 			</div>
 		</SkeletonTheme>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 type GridItemProps = {
 	item: any;
-	timeSincePubl: number;
+	timeSincePubl?: number;
 	datePubl: Date;
-	today: Date;
+	today?: Date;
 };
 
 const GridItem: React.FC<GridItemProps> = ({ item, timeSincePubl, datePubl, today }) => {
@@ -16,11 +17,7 @@ const GridItem: React.FC<GridItemProps> = ({ item, timeSincePubl, datePubl, toda
 				<div className="grid__item-desc">
 					<h3 className="grid__item-title">{item.snippet.title}</h3>
 					<div className="grid__item-chanel">{item.snippet.channelTitle}</div>
-					<div className="grid__item-date">
-						{timeSincePubl < 1
-							? `${Math.round((today.getTime() - datePubl.getTime()) / (1000 * 3600))} hours ago`
-							: `${timeSincePubl} days ago`}
-					</div>
+					<div className="grid__item-date">{moment(datePubl).startOf('day').fromNow()}</div>
 				</div>
 			</div>
 		</Link>
