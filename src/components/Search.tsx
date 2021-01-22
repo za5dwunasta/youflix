@@ -43,7 +43,7 @@ const Search: React.FC = () => {
 						value={tempSearch}
 					/>
 				</div>
-				<button type="submit" className="search__button">
+				<button type="submit" aria-label="Search" className="search__button">
 					<Loupe />
 				</button>
 			</form>

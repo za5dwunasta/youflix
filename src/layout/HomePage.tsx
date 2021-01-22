@@ -9,7 +9,7 @@ import './HomePage.scss';
 import ErrorPage from './ErrorPage';
 
 const HomePage: React.FC = () => {
-	const { videos, today, responseStatus, setLoadMore } = useVideosValue();
+	const { videos, today, responseStatus, setLoadMore, customSearch, searchTerm } = useVideosValue();
 	const container = useRef<HTMLDivElement>(null);
 
 	const trackScrolling = () => {
@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
 
 	useEffect(() => {
 		document.addEventListener('scroll', trackScrolling);
-	}, []);
+	});
 
 	return (
 		<div ref={container}>
@@ -34,7 +34,9 @@ const HomePage: React.FC = () => {
 				<ErrorPage />
 			) : (
 				<>
-					<h2 className="heading">Most popular videos on Youtube</h2>
+					<h2 className="heading">
+						{customSearch ? `Search results for: ${searchTerm}` : 'Most popular videos on Youtube'}
+					</h2>
 					<div className="results-grid">
 						{videos?.length > 0 &&
 							videos.map((item) => {

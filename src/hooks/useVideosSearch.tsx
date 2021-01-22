@@ -1,4 +1,3 @@
-import { loadavg } from 'os';
 import { useEffect, useState } from 'react';
 import { VideosType, responseStatusType, loadingType } from '../types/appTypes';
 
@@ -63,6 +62,7 @@ export const useVideosSearch = () => {
 		}
 		console.log(videos);
 		load();
-	}, [searchTerm, key, loadMore]);
+		// eslint-disable-next-line
+	}, [searchTerm, key, loadMore, customSearch]);
 	return { videos, customSearch, setCustomSearch, searchTerm, setSearchTerm, responseStatus, setLoadMore };
 };

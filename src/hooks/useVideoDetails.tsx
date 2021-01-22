@@ -37,12 +37,28 @@ const useVideoDetails = (id: string) => {
 					setResponseStatus(responseStatusType.error);
 					return;
 				}
-				setVideo({
+				console.log({
 					title: result.items[0].snippet.title,
 					views: result.items[0].statistics.viewCount,
 					likes: result.items[0].statistics.likeCount,
 					dislikes: result.items[0].statistics.dislikeCount,
 					comments: result.items[0].statistics.commentCount,
+					iframe: result.items[0].player.embedHtml,
+					date: result.items[0].snippet.publishedAt,
+				});
+				setVideo({
+					title: result.items[0].snippet.title,
+					views: result.items[0].statistics.viewCount,
+					likes:
+						result.items[0].statistics.likeCount === undefined ? 0 : result.items[0].statistics.likeCount,
+					dislikes:
+						result.items[0].statistics.dislikeCount === undefined
+							? 0
+							: result.items[0].statistics.dislikeCount,
+					comments:
+						result.items[0].statistics.commentCount === undefined
+							? 0
+							: result.items[0].statistics.commentCount,
 					iframe: result.items[0].player.embedHtml,
 					date: result.items[0].snippet.publishedAt,
 				});

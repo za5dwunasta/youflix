@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { numberWithSpaces } from '../helpers/helpers';
 import { ReactComponent as Like } from '../assets/like.svg';
 import { ReactComponent as Dislike } from '../assets/dislike.svg';
@@ -44,13 +44,13 @@ const SingleVideo = () => {
 						</p>
 
 						<p className="video__likes">
-							<Like /> {numberWithSpaces(video?.likes)}
+							<Like /> {video?.likes !== 0 ? numberWithSpaces(video?.likes) : video?.likes}
 						</p>
 						<p className="video__dislikes">
-							<Dislike /> {numberWithSpaces(video?.dislikes)}
+							<Dislike /> {video?.dislikes !== 0 ? numberWithSpaces(video?.dislikes) : video?.dislikes}
 						</p>
 						<p className="video__comments">
-							<Comment /> {numberWithSpaces(video?.comments)}
+							<Comment /> {video?.comments !== 0 ? numberWithSpaces(video?.comments) : video?.comments}
 						</p>
 						<button
 							onClick={() => {
